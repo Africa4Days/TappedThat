@@ -1,0 +1,6 @@
+framework module Pods_Tapped_That {
+  umbrella header "Pods-Tapped-That-umbrella.h"
+
+  export *
+  module * { export * }
+}

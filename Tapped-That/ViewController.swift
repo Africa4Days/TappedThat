@@ -14,7 +14,12 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-
-
+    
+    @IBAction func onButtonPress(_ sender: Any) {
+        UntappdAPI.searchForBeer(beer: "Shorts") { (res) in
+            print(res!)
+        }
+    }
+    
 }
 
