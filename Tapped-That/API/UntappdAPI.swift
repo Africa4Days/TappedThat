@@ -8,6 +8,21 @@
 
 import Foundation
 
+struct BeerInfo: Codable {
+    var beer_name: String
+    var brewery_label: String
+    var brewery_name: String
+    var type_name: String
+}
+
+struct Hits: Codable {
+    var hits: [BeerInfo]
+}
+
+struct Beer: Codable {
+    var results: [Hits]
+}
+
 class UntappdAPI {
     let getURL: String = "https://api.untappd.com/v4/"
     static let searchURL: String = "https://9wbo4rq3ho-dsn.algolia.net/1/indexes/*/queries?x-algolia-agent=Algolia%20for%20vanilla%20JavaScript%203.24.8&x-algolia-application-id=9WBO4RQ3HO&x-algolia-api-key=1d347324d67ec472bb7132c66aead485"
@@ -31,8 +46,13 @@ class UntappdAPI {
         request.httpMethod = "POST"
         
         let task = session.uploadTask(with: request, from: jsonData) { (data, response, error) in
-            if let data = data, let dataString = String(data: data, encoding: .utf8) {
-                closure(dataString)
+            let decoder = JSONDecoder()
+            
+            do {
+                let beer = try decoder.decode(Beer.self, from: data!)
+                closure(beer)
+            } catch {
+                closure("Error: \(error)")
             }
         }
         
