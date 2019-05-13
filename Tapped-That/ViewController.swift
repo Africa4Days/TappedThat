@@ -45,6 +45,14 @@ class ViewController: UIViewController, UISearchBarDelegate, UITableViewDataSour
         
         if beers != nil {
             cell.textLabel?.text = beers![indexPath.row].beer_name
+            let imageURL = URL(string: beers![indexPath.row].beer_label)!
+            
+            UntappdAPI.getImage(imageURL: imageURL) { (image) in
+                DispatchQueue.main.async {
+                    cell.imageView?.image = image
+                    self.tableView.reloadData()
+                }
+            }
         }
         
         return cell

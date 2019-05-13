@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct BeerInfo: Codable {
     var bid: Int
@@ -65,5 +66,18 @@ class UntappdAPI {
         }
         
         task.resume()
+    }
+    
+    static func getImage(imageURL: URL, closure: @escaping (UIImage) -> ()) {
+        let session = URLSession.shared
+        
+        let downloadImage = session.dataTask(with: imageURL) { (data, response, error) in
+            if let imageData = data {
+                let image = UIImage(data: imageData)
+                closure(image!)
+            }
+        }
+        
+        downloadImage.resume()
     }
 }
