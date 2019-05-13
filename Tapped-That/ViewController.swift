@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UISearchBarDelegate, UITableViewDataSource {
+class ViewController: UIViewController, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     var beers: [BeerInfo]?
@@ -18,6 +18,7 @@ class ViewController: UIViewController, UISearchBarDelegate, UITableViewDataSour
         // Do any additional setup after loading the view.
         searchBar.delegate = self
         tableView.dataSource = self
+        tableView.delegate = self
     }
     
     // SEARCH BAR FUNCTIONALITY
@@ -59,6 +60,10 @@ class ViewController: UIViewController, UISearchBarDelegate, UITableViewDataSour
         }
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "BeerSegue", sender: self)
     }
 }
 
