@@ -18,20 +18,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Go2-Fh-q93">
-                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Go2-Fh-q93">
+                                <rect key="frame" x="0.0" y="44" width="414" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="TcZ-39-cdB">
-                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="TcZ-39-cdB">
+                                <rect key="frame" x="0.0" y="100" width="414" height="796"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="9sO-vs-PwF">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="h5i-p6-lEn">
                                         <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9sO-vs-PwF" id="bo9-GL-Gdm">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="h5i-p6-lEn" id="ZQh-SS-0YG">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
@@ -40,6 +38,16 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="TcZ-39-cdB" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="0tV-lr-LbQ"/>
+                            <constraint firstItem="TcZ-39-cdB" firstAttribute="top" secondItem="Go2-Fh-q93" secondAttribute="bottom" id="4Kr-eP-u9X"/>
+                            <constraint firstItem="Go2-Fh-q93" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="63q-c9-j5W"/>
+                            <constraint firstItem="TcZ-39-cdB" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="CHg-J7-39A"/>
+                            <constraint firstAttribute="bottom" secondItem="TcZ-39-cdB" secondAttribute="bottom" id="Ipc-Tm-fJE"/>
+                            <constraint firstItem="Go2-Fh-q93" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="WvA-p3-f2u"/>
+                            <constraint firstItem="Go2-Fh-q93" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="k0f-jl-4TB"/>
+                            <constraint firstItem="TcZ-39-cdB" firstAttribute="top" secondItem="Go2-Fh-q93" secondAttribute="bottom" id="q37-0F-ifu"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>

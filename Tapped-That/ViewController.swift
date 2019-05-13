@@ -8,24 +8,46 @@
 
 import UIKit
 
-class ViewController: UIViewController, UISearchBarDelegate {
+class ViewController: UIViewController, UISearchBarDelegate, UITableViewDataSource {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
+    var beers: [BeerInfo]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         searchBar.delegate = self
+        tableView.dataSource = self
     }
     
+    // SEARCH BAR FUNCTIONALITY
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         UntappdAPI.searchForBeer(beer: searchBar.text!) { (res) in
-            let beers = res.results[0].hits
-
-            for beer in beers {
-                print(beer.beer_name)
+            self.beers = res.results[0].hits
+            
+            DispatchQueue.main.async{
+                self.tableView.reloadData()
             }
         }
+    }
+    
+    // TABLEVIEW METHODS
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return beers?.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        
+        if beers != nil {
+            cell.textLabel?.text = beers![indexPath.row].beer_name
+        }
+        
+        return cell
     }
 }
 
