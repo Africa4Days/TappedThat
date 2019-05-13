@@ -9,6 +9,8 @@
 import Foundation
 
 struct BeerInfo: Codable {
+    var bid: Int
+    var beer_abv: Float
     var beer_name: String
     var brewery_label: String
     var brewery_name: String
@@ -46,14 +48,18 @@ class UntappdAPI {
         request.httpMethod = "POST"
         
         let task = session.uploadTask(with: request, from: jsonData) { (data, response, error) in
-            let decoder = JSONDecoder()
+//            let dataString = String(data: data!, encoding: .utf8)
+//            closure(dataString)
             
+            let decoder = JSONDecoder()
+
             do {
                 let beer = try decoder.decode(Beer.self, from: data!)
                 closure(beer)
             } catch {
                 closure("Error: \(error)")
             }
+
         }
         
         task.resume()
