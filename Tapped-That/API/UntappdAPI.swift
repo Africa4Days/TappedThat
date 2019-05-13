@@ -10,11 +10,13 @@ import Foundation
 
 struct BeerInfo: Codable {
     var bid: Int
+    var brewery_id: Int
     var beer_abv: Float
     var beer_name: String
     var brewery_label: String
     var brewery_name: String
     var type_name: String
+    var beer_label: String
 }
 
 struct Hits: Codable {
@@ -29,7 +31,7 @@ class UntappdAPI {
     let getURL: String = "https://api.untappd.com/v4/"
     static let searchURL: String = "https://9wbo4rq3ho-dsn.algolia.net/1/indexes/*/queries?x-algolia-agent=Algolia%20for%20vanilla%20JavaScript%203.24.8&x-algolia-application-id=9WBO4RQ3HO&x-algolia-api-key=1d347324d67ec472bb7132c66aead485"
     
-    static func searchForBeer(beer: String, closure: @escaping (Any?) -> ()) {
+    static func searchForBeer(beer: String, closure: @escaping (Beer) -> ()) {
         let json: [String: Any] = [
             "requests": [
                 [
@@ -57,7 +59,7 @@ class UntappdAPI {
                 let beer = try decoder.decode(Beer.self, from: data!)
                 closure(beer)
             } catch {
-                closure("Error: \(error)")
+                print("Error: \(error)")
             }
 
         }

@@ -8,18 +8,24 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class ViewController: UIViewController, UISearchBarDelegate {
+    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        searchBar.delegate = self
     }
     
-    @IBAction func onButtonPress(_ sender: Any) {
-        UntappdAPI.searchForBeer(beer: "Shorts") { (res) in
-            print(res!)
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        UntappdAPI.searchForBeer(beer: searchBar.text!) { (res) in
+            let beers = res.results[0].hits
+
+            for beer in beers {
+                print(beer.beer_name)
+            }
         }
     }
-    
 }
 
