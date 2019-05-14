@@ -28,6 +28,8 @@ struct Beer: Codable {
     var results: [Hits]
 }
 
+// SINGLE BEER VIEW CONTROLLER STRUCTS
+
 struct BreweryLocation: Codable {
     var brewery_city: String
     var brewery_state: String
