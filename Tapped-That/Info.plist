@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string>This app requires your current location to help you find brews near you!</string>
 	<key>NSLocationUsageDescription</key>
 	<string>This app requires your current location to help you find brews near you!</string>
 	<key>LSApplicationCategoryType</key>
