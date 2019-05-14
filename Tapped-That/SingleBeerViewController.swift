@@ -16,7 +16,7 @@ class SingleBeerViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         UntappdAPI.getBeerInfo(beerID: beerID!) { (res) in
-            print(res!)
+            print(res.response.beer)
         }
     }
     

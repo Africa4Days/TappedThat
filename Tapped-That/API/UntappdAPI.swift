@@ -28,6 +28,48 @@ struct Beer: Codable {
     var results: [Hits]
 }
 
+struct BreweryLocation: Codable {
+    var brewery_city: String
+    var brewery_state: String
+    var lat: Double
+    var lng: Double
+}
+
+struct BreweryContact: Codable {
+    var twitter: String
+    var facebook: String
+    var url: String
+}
+
+struct Brewery: Codable {
+    var brewery_id: Int
+    var brewery_name: String
+    var brewery_page_url: String
+    var brewery_label: String
+    var country_name: String
+    var contact: BreweryContact
+    var location: BreweryLocation
+}
+
+struct SingleBeerInfo: Codable {
+    var bid: Int
+    var beer_name: String
+    var beer_label: String
+    var beer_abv: Float
+    var beer_ibu: Int
+    var beer_description: String
+    var beer_style: String
+    var brewery: Brewery
+}
+
+struct Beers: Codable {
+    var beer: SingleBeerInfo
+}
+
+struct SingleBeer: Codable {
+    var response: Beers
+}
+
 class UntappdAPI {
     static let getURL: String = "https://api.untappd.com/v4"
     static let searchURL: String = "https://9wbo4rq3ho-dsn.algolia.net/1/indexes/*/queries?x-algolia-agent=Algolia%20for%20vanilla%20JavaScript%203.24.8&x-algolia-application-id=9WBO4RQ3HO&x-algolia-api-key=1d347324d67ec472bb7132c66aead485"
@@ -84,7 +126,7 @@ class UntappdAPI {
     }
     
     // GETTING INFO ON A SPECIFIC BEER WITH ITS ID
-    static func getBeerInfo(beerID: Int, closure: @escaping (Any?) -> ()) {
+    static func getBeerInfo(beerID: Int, closure: @escaping (SingleBeer) -> ()) {
         var url = URLComponents(string: "\(getURL)/beer/info/\(beerID)")!
         
         let compact = "enhanced"
@@ -107,8 +149,17 @@ class UntappdAPI {
         let request = URLRequest(url: url.url!)
         
         let task = session.dataTask(with: request) { (data, response, error) in
-            let dataString = String(data: data!, encoding: .utf8)
-            closure(dataString)
+//            let dataString = String(data: data!, encoding: .utf8)
+//            closure(dataString)
+            
+            let decoder = JSONDecoder()
+
+            do {
+                let beerInfo = try decoder.decode(SingleBeer.self, from: data!)
+                closure(beerInfo)
+            } catch {
+                print("Error: \(error)")
+            }
         }
         
         task.resume()
