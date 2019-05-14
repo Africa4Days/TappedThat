@@ -12,6 +12,7 @@ class ViewController: UIViewController, UISearchBarDelegate, UITableViewDataSour
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     var beers: [BeerInfo]?
+    var beerId: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,7 +63,14 @@ class ViewController: UIViewController, UISearchBarDelegate, UITableViewDataSour
         return cell
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? SingleBeerViewController {
+            vc.beerID = beerId
+        }
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.beerId = beers![indexPath.row].bid
         performSegue(withIdentifier: "BeerSegue", sender: self)
     }
 }

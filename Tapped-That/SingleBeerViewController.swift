@@ -9,11 +9,17 @@
 import UIKit
 
 class SingleBeerViewController: UIViewController {
+    var beerID: Int?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        UntappdAPI.getBeerInfo(beerID: beerID!) { (res) in
+            print(res!)
+        }
     }
+    
+    
     
 }

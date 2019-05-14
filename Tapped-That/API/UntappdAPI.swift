@@ -85,11 +85,28 @@ class UntappdAPI {
     
     // GETTING INFO ON A SPECIFIC BEER WITH ITS ID
     static func getBeerInfo(beerID: Int, closure: @escaping (Any?) -> ()) {
-        let url = URL(string: "\(getURL)/beer/info/\(beerID)")!
+        var url = URLComponents(string: "\(getURL)/beer/info/\(beerID)")!
+        
+        let compact = "enhanced"
+        let dist_pref = "m"
+        let lat = "43.15630491545616"
+        let lng = "-85.56908186136279"
+        let radius = "10"
+        let access_token = "83C7A12B4243CF719F2454481121FD23550ECB23"
+        
+        let param = ["compact": compact, "dist_pref": dist_pref, "lat": lat, "lng": lng, "radius": radius,"access_token": access_token]
+        var items = [URLQueryItem]()
+        
+        for (key, value) in param {
+            items.append(URLQueryItem(name: key, value: value))
+        }
+        
+        url.queryItems = items
         
         let session = URLSession.shared
+        let request = URLRequest(url: url.url!)
         
-        let task = session.dataTask(with: url) { (data, response, error) in
+        let task = session.dataTask(with: request) { (data, response, error) in
             let dataString = String(data: data!, encoding: .utf8)
             closure(dataString)
         }
