@@ -14,8 +14,6 @@ class SingleBeerViewController: UIViewController, CLLocationManagerDelegate {
     
     var beerID: Int?
     var beerInfo: SingleBeerInfo?
-    var lat: Double?
-    var lng: Double?
 
     @IBOutlet weak var beerImage: UIImageView!
     @IBOutlet weak var beerName: UILabel!
@@ -30,13 +28,6 @@ class SingleBeerViewController: UIViewController, CLLocationManagerDelegate {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        UntappdAPI.getBeerInfo(beerID: beerID!) { (res) in
-            self.beerInfo = res.response.beer
-            
-            DispatchQueue.main.async {
-                self.updateUI()
-            }
-        }
         
         // If user has not said ok or said no ask again on view load
         if CLLocationManager.locationServicesEnabled() == true {
@@ -50,6 +41,15 @@ class SingleBeerViewController: UIViewController, CLLocationManagerDelegate {
         } else {
             print("User needs to accept this SHIT YO!")
         }
+        
+        UntappdAPI.getBeerInfo(beerID: beerID ?? 1) { (res) in
+            self.beerInfo = res.response.beer
+            
+            DispatchQueue.main.async {
+                self.updateUI()
+            }
+        }
+        
     }
     
     // User looking for the beer near their area
@@ -66,7 +66,8 @@ class SingleBeerViewController: UIViewController, CLLocationManagerDelegate {
     
     // LOCATION MANAGER DELEGATE METHODS
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print(locations)
+        var lat = locations[0].coordinate.latitude
+        var lng = locations[0].coordinate.longitude
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
