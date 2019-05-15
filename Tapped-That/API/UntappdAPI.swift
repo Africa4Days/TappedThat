@@ -108,9 +108,17 @@ struct Venues: Codable {
     var venue: Venue
 }
 
-struct Verified: Codable {
+struct VerifiedInfo: Codable {
     var count: Int
     var items: [Venues]
+}
+
+struct Verified: Codable {
+    var verified: VerifiedInfo
+}
+
+struct FindBeerResponse: Codable {
+    var response: Verified
 }
 
 class UntappdAPI {
@@ -209,7 +217,7 @@ class UntappdAPI {
     }
     
     // FINDING A BEER BY ID
-    static func findABeer(beerID: Int, lat: String, lng: String, closure: @escaping (Any) -> ()) {
+    static func findABeer(beerID: Int, lat: String, lng: String, closure: @escaping (FindBeerResponse) -> ()) {
         var url = URLComponents(string: "\(getURL)/beer/find/\(beerID)")!
         
         let param = ["dis_pref": "m", "lat": lat, "lng": lng, "mode": "enhanced", "radius": "10", "access_token": access_token]
@@ -228,7 +236,7 @@ class UntappdAPI {
             let decoder = JSONDecoder()
             
             do {
-                let locationInfo = try decoder.decode(<#T##type: Decodable.Protocol##Decodable.Protocol#>, from: data!)
+                let locationInfo = try decoder.decode(FindBeerResponse.self, from: data!)
                 closure(locationInfo)
             } catch {
                 print("Error: \(error)")

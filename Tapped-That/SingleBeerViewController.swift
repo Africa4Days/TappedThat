@@ -14,6 +14,8 @@ class SingleBeerViewController: UIViewController, CLLocationManagerDelegate {
     
     var beerID: Int?
     var beerInfo: SingleBeerInfo?
+    var lat: Double?
+    var lng: Double?
 
     @IBOutlet weak var beerImage: UIImageView!
     @IBOutlet weak var beerName: UILabel!
@@ -54,6 +56,11 @@ class SingleBeerViewController: UIViewController, CLLocationManagerDelegate {
     
     // User looking for the beer near their area
     @IBAction func onFindBrewClick(_ sender: Any) {
+        if lat != nil && lng != nil && beerID != nil {
+            UntappdAPI.findABeer(beerID: beerID!, lat: String(lat!), lng: String(lng!)) { (res) in
+                print(res)
+            }
+        }
     }
     
     // Update the UI when the data is fetched
@@ -66,8 +73,8 @@ class SingleBeerViewController: UIViewController, CLLocationManagerDelegate {
     
     // LOCATION MANAGER DELEGATE METHODS
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let lat = locations[0].coordinate.latitude
-        let lng = locations[0].coordinate.longitude
+        lat = locations[0].coordinate.latitude
+        lng = locations[0].coordinate.longitude
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
