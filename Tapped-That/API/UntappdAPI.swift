@@ -72,6 +72,47 @@ struct SingleBeer: Codable {
     var response: Beers
 }
 
+// FIND A BEER STRUCTS
+struct VenueIcon: Codable {
+    var lg: String
+    var md: String
+    var sm: String
+}
+
+struct VenueLocation: Codable {
+    var lat: Double
+    var lng: Double
+    var venue_address: String
+    var venue_city: String
+    var venue_country: String
+    var venue_state: String
+}
+
+struct VenueContact: Codable {
+    var twitter: String
+    var venue_url: String
+}
+
+struct Venue: Codable {
+    var contact: VenueContact
+    var location: VenueLocation
+    var primary_category: String
+    var venue_icon: VenueIcon
+    var venue_id: Int
+    var venue_name: String
+}
+
+struct Venues: Codable {
+    var created_at: String
+    var distance: Float
+    var venue: Venue
+}
+
+struct Verified: Codable {
+    var count: Int
+    var items: [Venues]
+}
+
 class UntappdAPI {
     static let access_token = "83C7A12B4243CF719F2454481121FD23550ECB23"
     static let getURL: String = "https://api.untappd.com/v4"
