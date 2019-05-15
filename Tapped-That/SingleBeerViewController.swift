@@ -23,7 +23,6 @@ class SingleBeerViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var beerABV: UILabel!
     @IBOutlet weak var beerIBU: UILabel!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -43,6 +42,7 @@ class SingleBeerViewController: UIViewController, CLLocationManagerDelegate {
         }
         
         UntappdAPI.getBeerInfo(beerID: beerID ?? 1) { (res) in
+            print(res)
             self.beerInfo = res.response.beer
             
             DispatchQueue.main.async {
@@ -66,8 +66,8 @@ class SingleBeerViewController: UIViewController, CLLocationManagerDelegate {
     
     // LOCATION MANAGER DELEGATE METHODS
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        var lat = locations[0].coordinate.latitude
-        var lng = locations[0].coordinate.longitude
+        let lat = locations[0].coordinate.latitude
+        let lng = locations[0].coordinate.longitude
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {

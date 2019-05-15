@@ -73,6 +73,7 @@ struct SingleBeer: Codable {
 }
 
 class UntappdAPI {
+    static let access_token = "83C7A12B4243CF719F2454481121FD23550ECB23"
     static let getURL: String = "https://api.untappd.com/v4"
     static let searchURL: String = "https://9wbo4rq3ho-dsn.algolia.net/1/indexes/*/queries?x-algolia-agent=Algolia%20for%20vanilla%20JavaScript%203.24.8&x-algolia-application-id=9WBO4RQ3HO&x-algolia-api-key=1d347324d67ec472bb7132c66aead485"
     
@@ -136,7 +137,6 @@ class UntappdAPI {
         let lat = "43.15630491545616"
         let lng = "-85.56908186136279"
         let radius = "10"
-        let access_token = "83C7A12B4243CF719F2454481121FD23550ECB23"
         
         let param = ["compact": compact, "dist_pref": dist_pref, "lat": lat, "lng": lng, "radius": radius,"access_token": access_token]
         var items = [URLQueryItem]()
@@ -159,6 +159,36 @@ class UntappdAPI {
             do {
                 let beerInfo = try decoder.decode(SingleBeer.self, from: data!)
                 closure(beerInfo)
+            } catch {
+                print("Error: \(error)")
+            }
+        }
+        
+        task.resume()
+    }
+    
+    // FINDING A BEER BY ID
+    static func findABeer(beerID: Int, lat: String, lng: String, closure: @escaping (Any) -> ()) {
+        var url = URLComponents(string: "\(getURL)/beer/find/\(beerID)")!
+        
+        let param = ["dis_pref": "m", "lat": lat, "lng": lng, "mode": "enhanced", "radius": "10", "access_token": access_token]
+        var items = [URLQueryItem]()
+        
+        for (key, value) in param {
+            items.append(URLQueryItem(name: key, value: value))
+        }
+        
+        url.queryItems = items
+        
+        let session = URLSession.shared
+        let request = URLRequest(url: url.url!)
+        
+        let task = session.dataTask(with: request) { (data, response, error) in
+            let decoder = JSONDecoder()
+            
+            do {
+                let locationInfo = try decoder.decode(<#T##type: Decodable.Protocol##Decodable.Protocol#>, from: data!)
+                closure(locationInfo)
             } catch {
                 print("Error: \(error)")
             }
