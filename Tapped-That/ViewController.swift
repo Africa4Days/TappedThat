@@ -24,10 +24,23 @@ class ViewController: UIViewController, UISearchBarDelegate, UITableViewDataSour
     
     // SEARCH BAR FUNCTIONALITY
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.beers = []
+        self.searchBar.endEditing(true)
         UntappdAPI.searchForBeer(beer: searchBar.text!) { (res) in
             self.beers = res.results[0].hits
             
             DispatchQueue.main.async{
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        UntappdAPI.searchForBeer(beer: searchText) { (res) in
+            self.beers = []
+            self.beers = res.results[0].hits
+            
+            DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
         }
