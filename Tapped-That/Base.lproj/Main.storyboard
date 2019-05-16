@@ -146,12 +146,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Beer Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NYb-ci-W9D">
-                                <rect key="frame" x="20" y="515" width="374" height="163"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Beer Description" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NYb-ci-W9D">
+                                <rect key="frame" x="20" y="515" width="374" height="347"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
+                                <size key="shadowOffset" width="0.0" height="0.0"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Beer ABV" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wzX-oa-iRX">
                                 <rect key="frame" x="20" y="460" width="187" height="21"/>
@@ -177,6 +178,7 @@
                                 </state>
                                 <connections>
                                     <action selector="onFindBrewClick:" destination="bLA-jy-DRK" eventType="touchUpInside" id="kfz-NE-Nge"/>
+                                    <segue destination="gfA-sq-Rxh" kind="show" identifier="FindBeer" id="PUa-hL-6lD"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -196,6 +198,30 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vaw-b4-99T" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1888.4057971014495" y="9.375"/>
+        </scene>
+        <!--Find Brew View Controller-->
+        <scene sceneID="for-Dy-LXQ">
+            <objects>
+                <viewController id="gfA-sq-Rxh" customClass="FindBrewViewController" customModule="Tapped_That" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hP8-8p-n2f">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="4Lr-ve-sXq">
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="IyZ-TN-zTx"/>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="4Lr-ve-sXq" id="DKn-hS-W8q"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0Oe-46-Wxn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2868.115942028986" y="4.6875"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="1W9-Kf-nuT">

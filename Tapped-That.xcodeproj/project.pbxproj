@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		29A215615E80C1AB214544DB /* Pods_Tapped_That.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D97C0DA588B97334FF49504F /* Pods_Tapped_That.framework */; };
+		8938A0C3228CF119003985C7 /* FindBrewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8938A0C2228CF119003985C7 /* FindBrewViewController.swift */; };
+		893C29DF228E2A72006B6452 /* BeerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893C29DE228E2A72006B6452 /* BeerTableViewController.swift */; };
 		895965A5228A28D800168170 /* BeerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895965A4228A28D800168170 /* BeerCell.swift */; };
 		895965A7228A302400168170 /* SingleBeerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895965A6228A302400168170 /* SingleBeerViewController.swift */; };
 		89DE4CAC228890A2009190C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89DE4CAB228890A2009190C8 /* AppDelegate.swift */; };
@@ -21,6 +23,8 @@
 /* Begin PBXFileReference section */
 		148BD2B1E25F60637E155325 /* Pods-Tapped-That.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tapped-That.release.xcconfig"; path = "Target Support Files/Pods-Tapped-That/Pods-Tapped-That.release.xcconfig"; sourceTree = "<group>"; };
 		218330CF5B1A7315D1FEBDA3 /* Pods-Tapped-That.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tapped-That.debug.xcconfig"; path = "Target Support Files/Pods-Tapped-That/Pods-Tapped-That.debug.xcconfig"; sourceTree = "<group>"; };
+		8938A0C2228CF119003985C7 /* FindBrewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindBrewViewController.swift; sourceTree = "<group>"; };
+		893C29DE228E2A72006B6452 /* BeerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerTableViewController.swift; sourceTree = "<group>"; };
 		895965A4228A28D800168170 /* BeerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerCell.swift; sourceTree = "<group>"; };
 		895965A6228A302400168170 /* SingleBeerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleBeerViewController.swift; sourceTree = "<group>"; };
 		89DE4CA8228890A2009190C8 /* Tapped-That.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tapped-That.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -63,6 +67,25 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		8938A0C4228CF12A003985C7 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				89DE4CAD228890A2009190C8 /* ViewController.swift */,
+				8938A0C2228CF119003985C7 /* FindBrewViewController.swift */,
+				895965A6228A302400168170 /* SingleBeerViewController.swift */,
+				893C29DE228E2A72006B6452 /* BeerTableViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		8938A0C5228CF17A003985C7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				89DE4CBD22889101009190C8 /* API */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		89DE4C9F228890A2009190C8 = {
 			isa = PBXGroup;
 			children = (
@@ -84,11 +107,10 @@
 		89DE4CAA228890A2009190C8 /* Tapped-That */ = {
 			isa = PBXGroup;
 			children = (
-				89DE4CBD22889101009190C8 /* API */,
-				89DE4CAB228890A2009190C8 /* AppDelegate.swift */,
-				89DE4CAD228890A2009190C8 /* ViewController.swift */,
-				895965A6228A302400168170 /* SingleBeerViewController.swift */,
+				8938A0C5228CF17A003985C7 /* Models */,
+				8938A0C4228CF12A003985C7 /* Controllers */,
 				89DE4CAF228890A2009190C8 /* Main.storyboard */,
+				89DE4CAB228890A2009190C8 /* AppDelegate.swift */,
 				895965A4228A28D800168170 /* BeerCell.swift */,
 				89DE4CB2228890A3009190C8 /* Assets.xcassets */,
 				89DE4CB4228890A3009190C8 /* LaunchScreen.storyboard */,
@@ -206,12 +228,14 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Tapped-That/Pods-Tapped-That-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/FloatingPanel/FloatingPanel.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FloatingPanel.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -226,10 +250,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				89DE4CBF22889139009190C8 /* UntappdAPI.swift in Sources */,
+				893C29DF228E2A72006B6452 /* BeerTableViewController.swift in Sources */,
 				895965A7228A302400168170 /* SingleBeerViewController.swift in Sources */,
 				89DE4CAE228890A2009190C8 /* ViewController.swift in Sources */,
 				89DE4CAC228890A2009190C8 /* AppDelegate.swift in Sources */,
 				895965A5228A28D800168170 /* BeerCell.swift in Sources */,
+				8938A0C3228CF119003985C7 /* FindBrewViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

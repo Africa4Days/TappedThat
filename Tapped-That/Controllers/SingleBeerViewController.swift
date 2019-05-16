@@ -56,11 +56,11 @@ class SingleBeerViewController: UIViewController, CLLocationManagerDelegate {
     
     // User looking for the beer near their area
     @IBAction func onFindBrewClick(_ sender: Any) {
-        if lat != nil && lng != nil && beerID != nil {
-            UntappdAPI.findABeer(beerID: beerID!, lat: String(lat!), lng: String(lng!)) { (res) in
-                print(res)
-            }
-        }
+//        if lat != nil && lng != nil && beerID != nil {
+//            UntappdAPI.findABeer(beerID: beerID!, lat: String(lat!), lng: String(lng!)) { (res) in
+//                print(res)
+//            }
+//        }
     }
     
     // Update the UI when the data is fetched
@@ -69,6 +69,13 @@ class SingleBeerViewController: UIViewController, CLLocationManagerDelegate {
         breweryName.text = beerInfo?.brewery.brewery_name
         beerType.text = beerInfo?.beer_style
         beerDescription.text = beerInfo?.beer_description
+        
+        let imageURL = URL(string: beerInfo!.beer_label)!
+        UntappdAPI.getImage(imageURL: imageURL) { (image) in
+            DispatchQueue.main.async {
+                self.beerImage.image = image
+            }
+        }
     }
     
     // LOCATION MANAGER DELEGATE METHODS

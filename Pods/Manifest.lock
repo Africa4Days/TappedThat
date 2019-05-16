@@ -1,16 +1,20 @@
 PODS:
   - Alamofire (5.0.0-beta.6)
+  - FloatingPanel (1.5.1)
 
 DEPENDENCIES:
   - Alamofire (~> 5.0.0-beta.5)
+  - FloatingPanel
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
+    - FloatingPanel
 
 SPEC CHECKSUMS:
   Alamofire: cd08a4402bd12cacd0c66f23fb12fec8d6b965e4
+  FloatingPanel: b2f4fb6f8fea7877954beff8f3f03bb6595ab354
 
-PODFILE CHECKSUM: 1d3686132505942e2ed7890c3b37411a3c6a13c0
+PODFILE CHECKSUM: 449a33d65149b2a29042a5deb45116b453f7d7e3
 
 COCOAPODS: 1.6.1

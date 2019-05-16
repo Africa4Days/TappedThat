@@ -7,4 +7,5 @@ target 'Tapped-That' do
 
   # Pods for Tapped-That
     pod 'Alamofire', '~> 5.0.0-beta.5'
+    pod 'FloatingPanel'
 end
