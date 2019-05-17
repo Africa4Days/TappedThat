@@ -22,7 +22,7 @@ class FindBrewViewController: UIViewController, FloatingPanelControllerDelegate 
         fpc = FloatingPanelController()
         fpc.delegate = self
         
-        let contentVC = BeerTableViewController()
+        let contentVC = storyboard?.instantiateViewController(withIdentifier: "ScrollingViewController") as! ScrollingViewController
         if venues != nil {
             contentVC.venues = venues
         }
