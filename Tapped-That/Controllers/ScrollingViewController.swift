@@ -15,7 +15,6 @@ class ScrollingViewController: UIViewController, UITableViewDelegate, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // Do any additional setup after loading the view.
         tableView.dataSource = self
         tableView.delegate = self
@@ -49,5 +48,9 @@ class ScrollingViewController: UIViewController, UITableViewDelegate, UITableVie
         }
         return cell
     }
-
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let venueDetailVC = storyboard?.instantiateViewController(withIdentifier: "VenueDetail") as! VenueDetailViewController
+        show(venueDetailVC, sender: FindBrewViewController())
+    }
 }

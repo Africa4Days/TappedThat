@@ -11,6 +11,7 @@
 		8938A0C3228CF119003985C7 /* FindBrewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8938A0C2228CF119003985C7 /* FindBrewViewController.swift */; };
 		893C29E4228F482C006B6452 /* ScrollingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893C29E3228F482C006B6452 /* ScrollingViewController.swift */; };
 		893C29E6228F48D5006B6452 /* ScrollingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893C29E5228F48D5006B6452 /* ScrollingCell.swift */; };
+		893C29E8228F5C4C006B6452 /* VenueDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893C29E7228F5C4C006B6452 /* VenueDetailViewController.swift */; };
 		895965A5228A28D800168170 /* BeerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895965A4228A28D800168170 /* BeerCell.swift */; };
 		895965A7228A302400168170 /* SingleBeerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895965A6228A302400168170 /* SingleBeerViewController.swift */; };
 		89DE4CAC228890A2009190C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89DE4CAB228890A2009190C8 /* AppDelegate.swift */; };
@@ -27,6 +28,7 @@
 		8938A0C2228CF119003985C7 /* FindBrewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindBrewViewController.swift; sourceTree = "<group>"; };
 		893C29E3228F482C006B6452 /* ScrollingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollingViewController.swift; sourceTree = "<group>"; };
 		893C29E5228F48D5006B6452 /* ScrollingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollingCell.swift; sourceTree = "<group>"; };
+		893C29E7228F5C4C006B6452 /* VenueDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueDetailViewController.swift; sourceTree = "<group>"; };
 		895965A4228A28D800168170 /* BeerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerCell.swift; sourceTree = "<group>"; };
 		895965A6228A302400168170 /* SingleBeerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleBeerViewController.swift; sourceTree = "<group>"; };
 		89DE4CA8228890A2009190C8 /* Tapped-That.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tapped-That.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -76,6 +78,7 @@
 				895965A6228A302400168170 /* SingleBeerViewController.swift */,
 				8938A0C2228CF119003985C7 /* FindBrewViewController.swift */,
 				893C29E3228F482C006B6452 /* ScrollingViewController.swift */,
+				893C29E7228F5C4C006B6452 /* VenueDetailViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -260,6 +263,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				893C29E8228F5C4C006B6452 /* VenueDetailViewController.swift in Sources */,
 				89DE4CBF22889139009190C8 /* UntappdAPI.swift in Sources */,
 				893C29E4228F482C006B6452 /* ScrollingViewController.swift in Sources */,
 				895965A7228A302400168170 /* SingleBeerViewController.swift in Sources */,
