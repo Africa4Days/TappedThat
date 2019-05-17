@@ -14,21 +14,22 @@ class BeerTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(venues)
+        
+        // registering a tableview cell
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "ScrollCell")
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return venues?.response.verified.count ?? 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ScrollCell", for: indexPath)
+        cell.textLabel?.text = venues!.response.verified.items[indexPath.row].venue.venue_name
         return cell
     }
 
