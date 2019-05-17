@@ -71,8 +71,8 @@
 			isa = PBXGroup;
 			children = (
 				89DE4CAD228890A2009190C8 /* ViewController.swift */,
-				8938A0C2228CF119003985C7 /* FindBrewViewController.swift */,
 				895965A6228A302400168170 /* SingleBeerViewController.swift */,
+				8938A0C2228CF119003985C7 /* FindBrewViewController.swift */,
 				893C29DE228E2A72006B6452 /* BeerTableViewController.swift */,
 			);
 			path = Controllers;

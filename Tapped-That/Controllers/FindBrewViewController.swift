@@ -14,6 +14,7 @@ class FindBrewViewController: UIViewController, FloatingPanelControllerDelegate 
 
     @IBOutlet weak var mapView: MKMapView!
     var fpc: FloatingPanelController!
+    var venues: FindBeerResponse?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,11 +23,16 @@ class FindBrewViewController: UIViewController, FloatingPanelControllerDelegate 
         fpc.delegate = self
         
         let contentVC = BeerTableViewController()
+        if venues != nil {
+            contentVC.venues = venues
+        }
+        
         fpc.set(contentViewController: contentVC)
         
         fpc.track(scrollView: contentVC.tableView)
         
         fpc.addPanel(toParent: self)
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {

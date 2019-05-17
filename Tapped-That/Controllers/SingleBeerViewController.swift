@@ -16,6 +16,7 @@ class SingleBeerViewController: UIViewController, CLLocationManagerDelegate {
     var beerInfo: SingleBeerInfo?
     var lat: Double?
     var lng: Double?
+    var venues: FindBeerResponse?
 
     @IBOutlet weak var beerImage: UIImageView!
     @IBOutlet weak var beerName: UILabel!
@@ -44,7 +45,6 @@ class SingleBeerViewController: UIViewController, CLLocationManagerDelegate {
         }
         
         UntappdAPI.getBeerInfo(beerID: beerID ?? 1) { (res) in
-            print(res)
             self.beerInfo = res.response.beer
             
             DispatchQueue.main.async {
@@ -54,13 +54,25 @@ class SingleBeerViewController: UIViewController, CLLocationManagerDelegate {
         
     }
     
+    // prepare for segue
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? FindBrewViewController {
+            vc.venues = venues
+        }
+    }
+    
     // User looking for the beer near their area
     @IBAction func onFindBrewClick(_ sender: Any) {
-//        if lat != nil && lng != nil && beerID != nil {
-//            UntappdAPI.findABeer(beerID: beerID!, lat: String(lat!), lng: String(lng!)) { (res) in
-//                print(res)
-//            }
-//        }
+        if lat != nil && lng != nil && beerID != nil {
+            UntappdAPI.findABeer(beerID: beerID!, lat: String(lat!), lng: String(lng!)) { (res) in
+                self.venues = res
+                
+                DispatchQueue.main.async {
+                    // perform segue after the venues has been set
+                    self.performSegue(withIdentifier: "FindABeer", sender: self)
+                }
+            }
+        }
     }
     
     // Update the UI when the data is fetched

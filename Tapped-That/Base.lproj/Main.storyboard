@@ -178,7 +178,6 @@
                                 </state>
                                 <connections>
                                     <action selector="onFindBrewClick:" destination="bLA-jy-DRK" eventType="touchUpInside" id="kfz-NE-Nge"/>
-                                    <segue destination="gfA-sq-Rxh" kind="show" identifier="FindBeer" id="PUa-hL-6lD"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -193,6 +192,7 @@
                         <outlet property="beerName" destination="SMi-Aj-n4Q" id="gPJ-6k-WHP"/>
                         <outlet property="beerType" destination="97U-RE-n8G" id="h0j-lN-RzH"/>
                         <outlet property="breweryName" destination="5a8-dM-Wq6" id="xFt-B1-w5j"/>
+                        <segue destination="gfA-sq-Rxh" kind="show" identifier="FindABeer" id="j3x-DN-wtR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vaw-b4-99T" userLabel="First Responder" sceneMemberID="firstResponder"/>
