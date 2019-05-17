@@ -19,7 +19,6 @@ class ScrollingViewController: UIViewController, UITableViewDelegate, UITableVie
         // Do any additional setup after loading the view.
         tableView.dataSource = self
         tableView.delegate = self
-        print(venues)
     }
     
     // TABLE VIEW METHODS
@@ -33,9 +32,20 @@ class ScrollingViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ScrollCell", for: indexPath) as! ScrollingCell
+        cell.tag = indexPath.row
+        
         if let venueArray = venues {
             cell.venueName.text = venueArray.response.verified.items[indexPath.row].venue.venue_name
             cell.venueType.text = venueArray.response.verified.items[indexPath.row].venue.primary_category
+            
+            let imageURL = URL(string: venueArray.response.verified.items[indexPath.row].venue.venue_icon.sm)!
+            UntappdAPI.getImage(imageURL: imageURL) { (image) in
+                DispatchQueue.main.async {
+                    if cell.tag == indexPath.row {
+                        cell.venueImage.image = image
+                    }
+                }
+            }
         }
         return cell
     }

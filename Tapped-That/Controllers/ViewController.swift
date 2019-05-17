@@ -57,6 +57,7 @@ class ViewController: UIViewController, UISearchBarDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! BeerCell
+        cell.tag = indexPath.row
         
         if beers != nil {
             cell.beerName.text = beers![indexPath.row].beer_name
@@ -67,8 +68,9 @@ class ViewController: UIViewController, UISearchBarDelegate, UITableViewDataSour
             
             UntappdAPI.getImage(imageURL: imageURL) { (image) in
                 DispatchQueue.main.async {
-                    cell.beerImage.image = image
-                    self.tableView.reloadData()
+                    if cell.tag == indexPath.row {
+                        cell.beerImage.image = image
+                    }
                 }
             }
         }
