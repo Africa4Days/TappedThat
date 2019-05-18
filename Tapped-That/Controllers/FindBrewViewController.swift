@@ -23,6 +23,7 @@ class FindBrewViewController: UIViewController, FloatingPanelControllerDelegate,
         super.viewDidLoad()
         
         mapView.delegate = self
+        self.mapView.showsUserLocation = true
         
         fpc = FloatingPanelController()
         fpc.delegate = self
@@ -51,7 +52,7 @@ class FindBrewViewController: UIViewController, FloatingPanelControllerDelegate,
         fpc.track(scrollView: contentVC.tableView)
         fpc.addPanel(toParent: self)
         
-        //setting up second fpc
+        // setting up second fpc
         let vc = storyboard?.instantiateViewController(withIdentifier: "VenueDetail") as! VenueDetailViewController
         secondFpc = FloatingPanelController()
         secondFpc.set(contentViewController: vc)
@@ -68,6 +69,17 @@ class FindBrewViewController: UIViewController, FloatingPanelControllerDelegate,
         secondFpc.set(contentViewController: vc)
         secondFpc.addPanel(toParent: self)
         fpc.move(to: .half, animated: true)
+    }
+    
+    func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
+        // starting the map view zoomed to the user location (MY LOCATION RN)
+        var mapRegion = MKCoordinateRegion()
+        //        mapRegion.center = CLLocationCoordinate2DMake(43.15630491545616, -85.56908186136279)
+        mapRegion.center = mapView.userLocation.coordinate
+        mapRegion.span.latitudeDelta = 0.2
+        mapRegion.span.longitudeDelta = 0.2
+        
+        mapView.setRegion(mapRegion, animated: true)
     }
     
 }
