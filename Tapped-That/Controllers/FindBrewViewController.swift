@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 import FloatingPanel
 
-class FindBrewViewController: UIViewController, FloatingPanelControllerDelegate {
+class FindBrewViewController: UIViewController, FloatingPanelControllerDelegate, MKMapViewDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
     
@@ -22,12 +22,28 @@ class FindBrewViewController: UIViewController, FloatingPanelControllerDelegate 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        mapView.delegate = self
+        
         fpc = FloatingPanelController()
         fpc.delegate = self
         
         let contentVC = storyboard?.instantiateViewController(withIdentifier: "ScrollingViewController") as! ScrollingViewController
         if venues != nil {
             contentVC.venues = venues
+            var locations = [MKPointAnnotation]()
+            
+            // adding annotation points to the map
+            for venue in venues!.response.verified.items {
+                let venuePoint = MKPointAnnotation()
+                let lat = venue.venue.location.lat
+                let lng = venue.venue.location.lng
+                venuePoint.title = venue.venue.venue_name
+                
+                venuePoint.coordinate = CLLocationCoordinate2DMake(lat, lng)
+                locations.append(venuePoint)
+            }
+            print(locations)
+            mapView.addAnnotations(locations)
         }
         
         // setting up first fpc
@@ -51,7 +67,7 @@ class FindBrewViewController: UIViewController, FloatingPanelControllerDelegate 
         secondFpc = FloatingPanelController()
         secondFpc.set(contentViewController: vc)
         secondFpc.addPanel(toParent: self)
-        fpc.hide()
+        fpc.move(to: .half, animated: true)
     }
     
 }

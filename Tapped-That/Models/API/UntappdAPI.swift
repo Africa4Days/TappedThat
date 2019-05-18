@@ -220,7 +220,7 @@ class UntappdAPI {
     static func findABeer(beerID: Int, lat: String, lng: String, closure: @escaping (FindBeerResponse) -> ()) {
         var url = URLComponents(string: "\(getURL)/beer/find/\(beerID)")!
         
-        let param = ["dis_pref": "m", "lat": lat, "lng": lng, "mode": "enhanced", "radius": "10", "access_token": access_token]
+        let param = ["dis_pref": "m", "lat": "43.15630491545616", "lng": "-85.56908186136279", "mode": "enhanced", "radius": "10", "access_token": access_token]
         var items = [URLQueryItem]()
         
         for (key, value) in param {
