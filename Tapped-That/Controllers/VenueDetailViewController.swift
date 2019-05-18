@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FloatingPanel
 
 class VenueDetailViewController: UIViewController {
 
@@ -15,8 +16,7 @@ class VenueDetailViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
-
     @IBAction func onButtonPress(_ sender: Any) {
-        
+        dismiss(animated: true, completion: nil)
     }
 }

@@ -51,6 +51,7 @@ class FindBrewViewController: UIViewController, FloatingPanelControllerDelegate 
         secondFpc = FloatingPanelController()
         secondFpc.set(contentViewController: vc)
         secondFpc.addPanel(toParent: self)
+        fpc.hide()
     }
-
+    
 }

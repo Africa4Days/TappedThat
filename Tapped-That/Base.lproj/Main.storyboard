@@ -303,7 +303,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
-                                    <action selector="onButtonPress:" destination="osR-nI-WZY" eventType="touchUpInside" id="NCC-9k-WRy"/>
+                                    <action selector="onButtonPress:" destination="osR-nI-WZY" eventType="touchUpInside" id="Mid-dO-qvB"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -313,7 +313,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PPG-HZ-3WN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4974" y="2"/>
+            <point key="canvasLocation" x="4973.913043478261" y="1.3392857142857142"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="1W9-Kf-nuT">
