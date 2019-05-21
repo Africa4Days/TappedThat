@@ -51,6 +51,9 @@ class ScrollingViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let venueDetailVC = storyboard?.instantiateViewController(withIdentifier: "VenueDetail") as! VenueDetailViewController
+        if venues != nil {
+            venueDetailVC.venue = venues!.response.verified.items[indexPath.row].venue
+        }
         show(venueDetailVC, sender: FindBrewViewController())
     }
 }

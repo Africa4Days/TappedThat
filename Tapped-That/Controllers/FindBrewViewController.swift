@@ -43,7 +43,6 @@ class FindBrewViewController: UIViewController, FloatingPanelControllerDelegate,
                 venuePoint.coordinate = CLLocationCoordinate2DMake(lat, lng)
                 locations.append(venuePoint)
             }
-            print(locations)
             mapView.addAnnotations(locations)
         }
         
@@ -81,5 +80,4 @@ class FindBrewViewController: UIViewController, FloatingPanelControllerDelegate,
         
         mapView.setRegion(mapRegion, animated: true)
     }
-    
 }
