@@ -8,6 +8,8 @@
 
 import UIKit
 import FloatingPanel
+import CoreLocation
+import MapKit
 
 class VenueDetailViewController: UIViewController {
     var venue: Venue?
@@ -35,6 +37,24 @@ class VenueDetailViewController: UIViewController {
     }
     
     @IBAction func onDirectionsButtonPress(_ sender: Any) {
+        // opening the venue in the maps app
+        if venue != nil {
+            let lat = venue!.location.lat
+            let lng = venue!.location.lng
+            let coordinates = CLLocationCoordinate2D(latitude: lat, longitude: lng)
+            
+            let regionDistance: CLLocationDistance = 10000
+            let regionSpan = MKCoordinateRegion(center: coordinates, latitudinalMeters: 100, longitudinalMeters: 100)
+            let options = [
+                MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: regionSpan.center),
+                MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan: regionSpan.span)
+            ]
+            
+            let placeMark = MKPlacemark(coordinate: coordinates, addressDictionary: nil)
+            let mapItem = MKMapItem(placemark: placeMark)
+            mapItem.name = venue!.venue_name
+            mapItem.openInMaps(launchOptions: options)
+        }
     }
     
     
